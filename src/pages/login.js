@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
-import { Card, Button,ButtonGroup, CardDeck, CardText, Row, Col,Form, FormGroup, FormText, Label, Input, } from 'reactstrap';
+// import { Card, Button,ButtonGroup, CardDeck, CardText, Row, Col,Form, FormGroup, FormText, Label, Input, } from 'reactstrap';
+import {FormGroup, Col, Row, ControlLabel, FormControl, Checkbox, Button, Form, HelpBlock, ButtonToolbar} from 'react-bootstrap';
 
 class Login extends Component {
     render() {
@@ -8,60 +9,59 @@ class Login extends Component {
         return (
             <div className="container" style={containerStyle}>
                 <h3 className="text-center text-primary">LOGIN</h3><br/>
-
                 <Row>
-                    <Col  sm={{ size: 8, push: 1, pull: 1, offset: 1 }}>
-                        <CardDeck>
-                            <Card block outline color="primary" >
-                                <CardText>
-                                    <Form>
-                                        <Col sm={12}>
-                                            <FormText color="muted" className="text-center">Please login with your existing account</FormText>
-                                        </Col>
-                                        <hr/>
-                                        <FormGroup row>
-                                            <Label for="userEmail" sm={3}>Email &nbsp;:</Label>
-                                            <Col sm={9}>
-                                                <Input type="email" name="email" id="userEmail" placeholder=" Email " required/>
-                                            </Col>
-                                        </FormGroup>
-                                        <FormGroup row>
-                                            <Label for="userPassword" sm={3}>Password&nbsp;:</Label>
-                                            <Col sm={9}>
-                                                <Input type="password" name="password" id="userPassword" placeholder=" Password" required/>
-                                            </Col>
-                                        </FormGroup>
-                                        <Col sm={{ size: 10, offset: 5 }} >
-                                            <Button color="success" type="submit">LOGIN</Button><br/>
-                                        </Col>
-                                        <br />
-                                        <FormGroup row>
-                                            <Col sm={{size:6, offset:3}}>
-                                                <Label>Not a member ?<Link to="/signup">&nbsp;&nbsp;Create an account</Link> </Label>
-                                                {/*<Label>Forgot password ?<Link to="/forgetpassword">&nbsp;&nbsp;Reset password</Link> </Label>*/}
-                                            </Col>
-                                        </FormGroup>
-                                        <hr />
-                                        <Form inline>
-                                            <FormGroup >
-                                                <Col sm={{ size:5, offset:1}}>
-                                                    <ButtonGroup>
-                                                        <Button color="primary" block><i className="fa fa-facebook fa-lg" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            Login with Facebook&nbsp;&nbsp;&nbsp;&nbsp;</Button>
-                                                    </ButtonGroup>
-                                                </Col>
-                                                <Col sm={{ size:5, offset:1}}>
-                                                    <ButtonGroup>
-                                                        <Button color="danger" block><i className="fa fa-google fa-lg" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            Login with Google&nbsp;&nbsp;&nbsp;&nbsp;</Button>
-                                                    </ButtonGroup>
-                                                </Col>
-                                            </FormGroup>
-                                        </Form>
-                                    </Form>
-                                </CardText>
-                            </Card>
-                        </CardDeck>
+                    <Col  smOffset={1} sm={10}>
+                        <Form horizontal>
+                            <FormGroup className="text-center">
+                                <Col sm={12}>
+                                    <HelpBlock >Please login with your existing account</HelpBlock>
+                                </Col>
+                            </FormGroup>
+                            <hr />
+                            <FormGroup controlId="userEmail">
+                                <Col componentClass={ControlLabel} sm={3}>
+                                    Email&nbsp;:
+                                </Col>
+                                <Col sm={6}>
+                                    <FormControl type="email" placeholder="Email" />
+                                </Col>
+                            </FormGroup>
+                            <FormGroup controlId="userPassword">
+                                <Col componentClass={ControlLabel} sm={3}>
+                                    Password&nbsp;:
+                                </Col>
+                                <Col sm={6}>
+                                    <FormControl type="password" placeholder="Password" />
+                                </Col>
+                            </FormGroup><br />
+                            <FormGroup>
+                                <Col smOffset={5} sm={8}>
+                                    <Checkbox>Remember me</Checkbox>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup>
+                                <Col smOffset={5} sm={2}>
+                                    <Button bsStyle="primary" type="submit" block>
+                                        Sign in
+                                    </Button>
+                                </Col>
+                            </FormGroup><br />
+                            <FormGroup>
+                                <Col smOffset={3} sm={10}>
+                                    Not a member ?<Link to="/signup">&nbsp;&nbsp;Create an account</Link>{' '}|{' '}
+                                    Forgot password ?<Link to="/forgetpassword">&nbsp;&nbsp;Reset password</Link>
+                                </Col>
+                            </FormGroup>
+                            <hr />
+                            <Col smOffset={3} sm={10}>
+                                <ButtonToolbar>
+                                    <Button bsStyle="primary"><i className="fa fa-facebook fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Sign-up with Facebook&nbsp;&nbsp;&nbsp;&nbsp;</Button>{' '}
+                                    <Button bsStyle="danger"><i className="fa fa-google fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Sign-up with Google&nbsp;&nbsp;&nbsp;&nbsp;</Button>
+                                </ButtonToolbar>
+                            </Col>
+                        </Form>
                     </Col>
                 </Row>
             </div>

@@ -5,7 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import Navbars from './component/navbar';
 import Footer from './component/footer';
-import './../node_modules/bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 import Layout from './pages/layout';
 import Signup from './pages/signup';
@@ -15,7 +15,7 @@ const root = document.getElementById('root');
 
 ReactDOM.render(
     <Router>
-        <div className="container">
+        <div className="container-fluid">
             <Navbars/>
             <Switch>
                 <Route exact path="/" component={ Layout }></Route>
