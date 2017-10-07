@@ -17,7 +17,7 @@ export default class Navbars extends Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav pullRight>
-                            <NavItem eventKey={1}><Link to="/signup"><Button bsStyle="warning">signup</Button></Link></NavItem>
+                            <NavItem eventKey={1}><Link to="/signup"><Button bsStyle="warning">Signup</Button></Link></NavItem>
                             <NavItem eventKey={2}><Link to="/login"><Button bsStyle="primary">Login</Button></Link></NavItem>
                         </Nav>
                     </Navbar.Collapse>
