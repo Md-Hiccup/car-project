@@ -11,13 +11,13 @@ class Login extends Component {
                 <h3 className="text-center text-primary">LOGIN</h3><br/>
                 <Row>
                     <Col  smOffset={1} sm={10}>
+                        <hr />
                         <Form horizontal>
                             <FormGroup className="text-center">
                                 <Col sm={12}>
                                     <HelpBlock >Please login with your existing account</HelpBlock>
                                 </Col>
                             </FormGroup>
-                            <hr />
                             <FormGroup controlId="userEmail">
                                 <Col componentClass={ControlLabel} sm={3}>
                                     Email&nbsp;:
@@ -56,9 +56,9 @@ class Login extends Component {
                             <Col smOffset={3} sm={10}>
                                 <ButtonToolbar>
                                     <Button bsStyle="primary"><i className="fa fa-facebook fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        Sign-up with Facebook&nbsp;&nbsp;&nbsp;&nbsp;</Button>{' '}
+                                        Sign-in with Facebook&nbsp;&nbsp;&nbsp;&nbsp;</Button>{' '}
                                     <Button bsStyle="danger"><i className="fa fa-google fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        Sign-up with Google&nbsp;&nbsp;&nbsp;&nbsp;</Button>
+                                        Sign-in with Google&nbsp;&nbsp;&nbsp;&nbsp;</Button>
                                 </ButtonToolbar>
                             </Col>
                         </Form>
