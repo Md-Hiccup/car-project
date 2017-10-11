@@ -2,6 +2,7 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var bootstrapEntryPoints = require('./webpack.bootstrap.config');
 
@@ -18,21 +19,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(css|scss)$/,
+                test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    use: [
-                        { loader : "style-loader"},
-                        { loader : "css-loader"},
-                        { loader: "postcss-loader",
-                            options: {
-                                plugins:() => [
-                                    require('precss'),
-                                    require('autoprefixer')
-                                ]
-                            }
-                        },
-                        {loader : "sass-loader"},
-                    ],
+                    fallback: 'style-loader',
+                    use: [ 'css-loader','sass-loader']
                 })
             },
             {
@@ -67,19 +57,21 @@ module.exports = {
         open: true,
         hot: true,
         historyApiFallBack: true,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:8080',
-                secure: false,
-                changeOrigin: true
-            }
-        }
+        // proxy: [
+        //     {
+        //         context: ['/api', '/users'],
+        //         target: 'https://localhost:9002/',
+        //         secure: false
+        //     }
+        // ]
     },
     output: {
         path: path.resolve(__dirname ,"dist"),
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        publicPath: '/'
     },
     plugins: [
+        // new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title:'React js',
             template:'./public/index.html' ,

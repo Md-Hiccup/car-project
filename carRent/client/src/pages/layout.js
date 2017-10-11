@@ -23,6 +23,7 @@ class Layout extends Component {
                 <FrontPage />
                 <div className="Layout">
                     <h1>Users</h1>
+                    {/*{this.state.users.result}*/}
                     {this.state.users.map(user =>
                         <div key={1}>user : {user.api}</div>
                     )}
