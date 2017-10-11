@@ -1,0 +1,24 @@
+{
+  "name": "carrent",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"nodemon ./bin/www\" \"cd client && npm run dev\"",
+    "prod": "\"cd client && npm run prod\"",
+    "start": "concurrently \"nodemon ./bin/www\" \"cd client && npm start\""
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "morgan": "~1.8.1",
+    "nodemon": "^1.12.1",
+    "serve-favicon": "~2.4.2",
+    "superagent": "^3.6.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}

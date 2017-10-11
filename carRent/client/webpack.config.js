@@ -61,10 +61,19 @@ module.exports = {
     },
     devServer : {
         contentBase: './dist',
-        compress : true,
-        port : 9002,
-        stats : 'errors-only',
-        open : true
+        compress: true,
+        port: 9002,
+        stats: 'errors-only',
+        open: true,
+        hot: true,
+        historyApiFallBack: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080',
+                secure: false,
+                changeOrigin: true
+            }
+        }
     },
     output: {
         path: path.resolve(__dirname ,"dist"),

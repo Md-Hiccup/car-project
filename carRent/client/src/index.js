@@ -22,6 +22,7 @@ ReactDOM.render(
                 <Route path="/signup" component={Signup}></Route>
                 <Route path="/login" component={Login}></Route>
             </Switch>
+           
             <Footer/>
         </div>
     </Router>, root
