@@ -4,7 +4,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var bootstrapEntryPoints = require('./webpack.bootstrap.config');
+var bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
 
 var isProd = process.env.NODE_ENV === 'production';
 var bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
@@ -56,7 +56,7 @@ module.exports = {
         stats: 'errors-only',
         open: true,
         hot: true,
-        historyApiFallBack: true,
+        // historyApiFallBack: true,
         // proxy: [
         //     {
         //         context: ['/api', '/users'],
