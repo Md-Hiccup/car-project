@@ -17,6 +17,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
     "reactstrap": "^4.8.0",
+    "sequelize": "^4.15.0",
+    "sequelize-cli": "^3.0.0",
     "superagent": "^3.6.3",
     "tether": "^1.4.0",
     "webpack": "^3.6.0"
