@@ -55,9 +55,9 @@ class Login extends Component {
                             <hr />
                             <Col smOffset={3} sm={10}>
                                 <ButtonToolbar>
-                                    <Button bsStyle="primary"><i className="fa fa-facebook fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <Button bsStyle="primary" href="/auth/facebook"><i className="fa fa-facebook fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         Sign-in with Facebook&nbsp;&nbsp;&nbsp;&nbsp;</Button>{' '}
-                                    <Button bsStyle="danger"><i className="fa fa-google fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <Button bsStyle="danger" href="/auth/google"><i className="fa fa-google fa-lg" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         Sign-in with Google&nbsp;&nbsp;&nbsp;&nbsp;</Button>
                                 </ButtonToolbar>
                             </Col>
