@@ -2,17 +2,59 @@ import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
 // import { Card, Button,ButtonGroup, CardDeck, CardText, Row, Col,Form, FormGroup, FormText, Label, Input, } from 'reactstrap';
 import {FormGroup, Col, Row, ControlLabel, FormControl, Checkbox, Button, Form, HelpBlock, ButtonToolbar} from 'react-bootstrap';
+import axios from 'axios';
 
 class Login extends Component {
+    constructor(){
+        super();
+        this.state ={
+            user: {
+                email: '',
+                password: '',
+            }
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+    async handleSubmit(e) {
+        e.preventDefault();
+        var userdata = this.state.user;
+        try {
+            await axios({
+                url : '/login',
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: userdata
+            }).then(res => {console.log("a",res); return res.json});
+        } catch(e){
+            console.log('There was an error working on this', e)
+        }
+        // const user = await response.json();
+        // if(user){
+        //     local
+        // }
+            // .then(res => {console.log("a",res); return res.json();})
+            // .then(data => {console.log('Request succeeded with JSON response', data)});
+    };
+    handleOnChange(e) {
+        const name = e.target.name;
+        const user = this.state.user;
+        user[name] = e.target.value;
+        this.setState({user});
+    };
+
     render() {
-    const containerStyle = { marginTop: "40px" };
+         const containerStyle = { marginTop: "40px" };
         return (
             <div className="container" style={containerStyle}>
                 <h3 className="text-center text-primary">LOGIN</h3><br/>
                 <Row>
                     <Col  smOffset={1} sm={10}>
                         <hr />
-                        <Form horizontal>
+                        <Form horizontal onSubmit={this.handleSubmit}>
                             <FormGroup className="text-center">
                                 <Col sm={12}>
                                     <HelpBlock >Please login with your existing account</HelpBlock>
@@ -23,7 +65,7 @@ class Login extends Component {
                                     Email&nbsp;:
                                 </Col>
                                 <Col sm={6}>
-                                    <FormControl type="email" placeholder="Email" />
+                                    <FormControl type="email" placeholder="Email" name="email" onChange={this.handleOnChange}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup controlId="userPassword">
@@ -31,7 +73,7 @@ class Login extends Component {
                                     Password&nbsp;:
                                 </Col>
                                 <Col sm={6}>
-                                    <FormControl type="password" placeholder="Password" />
+                                    <FormControl type="password" placeholder="Password" name="password" onChange={this.handleOnChange}/>
                                 </Col>
                             </FormGroup><br />
                             <FormGroup>

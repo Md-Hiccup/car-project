@@ -9,16 +9,37 @@ var passport = require('../config/passport');
 module.exports = function (passport) {
     /* GET home page. */
     router.get('/home', function(req, res, next) {
-        res.json('index home page')
+        res.json({home: 'index home page'})
     });
     router.get('/api', function(req, res){
         res.json(
             [{ api : 'from api' }])
     });
-    router.post('/login', function(req, res){
+    router.post('/log', function(req, res){
         console.log("request : ",req.body);
         res.json(req.body);
     });
+
+    // router.get('/signup', function (req, res) {
+    //     res.json({ signup: "from signup page" });
+    // });
+    router.post('/signup', passport.authenticate('local-signup', {
+        failWithError : true
+    }),function(user, req, res, next){
+        console.log('UserSignup  : '+ JSON.stringify(user));
+        res.json(user);
+    });
+
+    // router.get('/login', function (req, res) {
+    //     res.json({ login :  'from login page'})
+    // });
+    router.post('/login', passport.authenticate('local-login', {
+        failWithError : true
+    }),function(user, req, res, next) {
+        console.log("UserLogin :"+JSON.stringify(user));
+        res.json(user);
+    });
+
     router.get('/auth/google', passport.authenticate('google', { scope: [ 'profile', 'email' ]}));
 
     router.get('/auth/google/callback', passport.authenticate('google', {
@@ -36,6 +57,14 @@ module.exports = function (passport) {
         successRedirect : '/home',
         failureRedirect : '/login'
     }));
+
+    router.get('/logout', function (req, res) {
+        req.session.destroy(function (err) {
+            // res.redirect('/')
+            res.json({ logout: "from logout page" });
+        });
+        console.log("in logout");
+    });
 
     return router;
 }

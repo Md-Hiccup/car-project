@@ -16,16 +16,16 @@ class Layout extends Component {
         fetch('/users')
             .then(res => {console.log(res); return res.json();})
             .then(users => {console.log(users);this.setState({ users: users })});
-        fetch('/login',{
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'post',
-            body: JSON.stringify({a: 1, b: 2})
-            })
-            .then(res => {console.log("a",res); return res.json();})
-            .then(data => {console.log('Request succeeded with JSON response', data)});
+        // fetch('/login',{
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     method: 'post',
+        //     body: JSON.stringify({a: 1, b: 2})
+        //     })
+        //     .then(res => {console.log("a",res); return res.json();})
+        //     .then(data => {console.log('Request succeeded with JSON response', data)});
     }
     render() {
         return (

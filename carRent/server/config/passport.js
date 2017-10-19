@@ -13,7 +13,7 @@ module.exports = function(passport, user , google, facebook){
     var User = user;
     var Google = google;
     var Facebook = facebook;
-    // var LocalStrategy = require('passport-local').Strategy;
+    var LocalStrategy = require('passport-local').Strategy;
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -30,13 +30,14 @@ module.exports = function(passport, user , google, facebook){
         });
     });
 
- /*   passport.use('local-signup', new LocalStrategy(
+    passport.use('local-signup', new LocalStrategy(
         {
             usernameField : 'email',
             passwordField : 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, email, password, done) {
+            console.log('signup 111111111');
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
@@ -50,15 +51,16 @@ module.exports = function(passport, user , google, facebook){
                     {
                         email: email,
                         password: userPassword,
-                        first_name: req.body.first_name,
-                        last_name: req.body.last_name
+                        name: req.body.name,
+                        mobile:req.body.mobile
                     };
                     User.create(data).then(function (newUser, created){
+                        console.log('new user 3333333333');
                         if (!newUser) {
                             return done(null, false);
                         }
                         if (newUser) {
-                            return done({status : 200 , id : newUser.id , name : newUser.first_name+" "+newUser.last_name});
+                            return done({status : 200 , id : newUser.id , name : newUser.name});
                         }
                     }).catch(function(error) {
                         return done({status : 401 ,message : 'Email is not valid'});
@@ -83,7 +85,7 @@ module.exports = function(passport, user , google, facebook){
             var User = user;
             var isValidPassword = function(userpass,password){
                 return bCrypt.compareSync(password, userpass);
-            }
+            };
             User.findOne({ where : { email: email}}).then(function (user) {
                 if (!user) {
                     return done({status: 401 , message :'Email does not exist' });
@@ -92,13 +94,13 @@ module.exports = function(passport, user , google, facebook){
                     return done({status : 401 , message : 'Incorrect password.'});
                 }
                 var userinfo = user.get();
-                return done({status : 200 , id : userinfo.id , name : userinfo.first_name+" "+ userinfo.last_name});
+                return done({status : 200 , id : userinfo.id , name : userinfo.name});
             }).catch(function(err){
                 return done({status : 401 , message:'Something went wrong with your Login'});
             });
         }
     ));
-*/
+
     passport.use(new GoogleStrategy({
             clientID: configAuth.googleAuth.clientID,
             clientSecret: configAuth.googleAuth.clientSecret,
